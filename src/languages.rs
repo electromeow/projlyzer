@@ -120,6 +120,7 @@ pub fn extensions<'a>() -> HashMap<&'a str,Language> {
   ("lua", Language::Lua),
   ("erl", Language::Erlang),
   ("hrl", Language::Erlang),
+  ("beam", Language::Proprietary), // Erlang VM
   ("jl", Language::Julia),
   ("fs", Language::FSharp),
   ("asp", Language::ASP),
