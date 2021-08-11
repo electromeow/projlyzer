@@ -47,7 +47,10 @@ pub enum Language {
   ASP,
   Crystal,
   Brainfuck,
-  Proprietary
+  Proprietary,
+  V,
+  Solidity,
+  Markdown,
 }
 
 pub fn extensions<'a>() -> HashMap<&'a str,Language> {
@@ -123,7 +126,10 @@ pub fn extensions<'a>() -> HashMap<&'a str,Language> {
   ("svelte", Language::Svelte),
   ("so", Language::Proprietary),
   ("o", Language::Proprietary),
-  ("", Language::Proprietary)
+  ("md", Language::Markdown),
+  ("sol", Language::Solidity),
+  ("v", Language::V),
+  ("", Language::Proprietary),
 ].into_iter().collect()
 }
 
@@ -174,6 +180,9 @@ impl std::fmt::Display for Language {
       &Language::ASP => write!(f,"ASP"),
       &Language::Crystal => write!(f,"Crystal"),
       &Language::Brainfuck => write!(f,"Brainfuck"),
+      &Language::V => write!(f,"V"),
+      &Language::Solidity => write!(f,"Solidity"),
+      &Language::Markdown => write!(f,"Markdown"),
       &Language::Proprietary => write!(f,"Potentially Proprietary Malware"),
     }
   }
@@ -227,6 +236,9 @@ impl Language {
       &Language::Crystal => set_fg(Color::White),
       &Language::Brainfuck => set_fg(Color::White),
       &Language::Proprietary => set_fg(Color::Red),
+      &Language::Solidity => set_fg(Color::Color256(94)),
+      &Language::Markdown => set_fg(Color::Color256(246)),
+      &Language::V => set_fg(Color::Color256(74)),
     };
   }
 }
