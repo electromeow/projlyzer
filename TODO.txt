@@ -1,3 +1,2 @@
 -> Add respect for .gitignore files
 -> Add license detection
--> Add git repository detection
