@@ -2,7 +2,7 @@
 A CLI for analyzing the programming languages and how much code written in a project.\
 New features are on the way...
 ## Example Screenshot
-<img src="https://i.ibb.co/HTg3vf9/Screenshot-at-Aug-11-16-53-53.png" alt="Example screenshot" />
+<img src="https://i.ibb.co/9H5fwvK/projlyzer-example.png" alt="Example screenshot" />
 
 ## Build and use
 Note: The commmands below are for Unixish systems. I don't know the Windows way to do that since I'm a MacOS user and Linux lover. (Please add the Windows way by opening a PR, you Windows user!)
