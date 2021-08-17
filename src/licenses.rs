@@ -1,5 +1,6 @@
 pub enum License {
   MIT,
+  ISC,
   GPLv2,
   GPLv3,
   Apachev2,
@@ -41,6 +42,9 @@ pub fn find_license(license_text: &String) -> License {
       return License::SimplifiedBSD;
     }
   }
+  if license_lower.contains("permission to use, copy, modify"){
+    return License::ISC;
+  }
   if license_lower.contains("gnu lesser general public license") {
     if license_lower.contains("version 2"){
       return License::LGPLv2;
@@ -81,6 +85,7 @@ impl std::fmt::Display for License {
   fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
       match self {
         &License::MIT => write!(f, "MIT"),
+        &License::ISC => write!(f, "ISC or old-style MIT"),
         &License::GPLv2 => write!(f, "GNU GPL v2"),
         &License::GPLv3 => write!(f, "GNU GPL v3"),
         &License::Apachev2 => write!(f, "Apache License 2.0"),
