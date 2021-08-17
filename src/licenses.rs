@@ -1,89 +1,90 @@
 pub enum License {
-  MIT,
-  ISC,
-  GPLv2,
-  GPLv3,
-  Apachev2,
-  BSD,
-  LGPLv2,
-  LGPLv3,
-  EPLv1,
-  EPLv2,
-  SimplifiedBSD,
-  MSPL,
-  CodeProjectOpenLicense,
-  MPL,
-  AGPLv3,
-  AGPLv2,
-  NotResolved
+    MIT,
+    ISC,
+    GPLv2,
+    GPLv3,
+    Apachev2,
+    BSD,
+    LGPLv2,
+    LGPLv3,
+    EPLv1,
+    EPLv2,
+    SimplifiedBSD,
+    MSPL,
+    CodeProjectOpenLicense,
+    MPL,
+    AGPLv3,
+    AGPLv2,
+    NotResolved,
 }
 
 pub fn find_license(license_text: &String) -> License {
-  let license_lower = license_text.to_lowercase();
-  if license_lower.contains("permission is hereby granted, free of charge"){
-    return License::MIT;
-  }
-  if license_lower.contains("gnu general public license") {
-    if license_lower.contains("version 2"){
-      return License::GPLv2;
+    let license_lower = license_text.to_lowercase();
+    if license_lower.contains("permission is hereby granted, free of charge") {
+        return License::MIT;
     }
-    if license_lower.contains("version 3"){
-      return License::GPLv3;
+    if license_lower.contains("gnu general public license") {
+        if license_lower.contains("version 2") {
+            return License::GPLv2;
+        }
+        if license_lower.contains("version 3") {
+            return License::GPLv3;
+        }
     }
-  }
-  if license_lower.contains("apache license") && license_lower.contains("version 2"){
-    return License::Apachev2;
-  }
-  if license_lower.contains("redistribution and use in source and binary forms"){
-    if license_lower.contains("3. neither the name of the copyright holder"){
-      return License::BSD;
+    if license_lower.contains("apache license") && license_lower.contains("version 2") {
+        return License::Apachev2;
     }
-    else {
-      return License::SimplifiedBSD;
+    if license_lower.contains("redistribution and use in source and binary forms") {
+        if license_lower.contains("3. neither the name of the copyright holder") {
+            return License::BSD;
+        } else {
+            return License::SimplifiedBSD;
+        }
     }
-  }
-  if license_lower.contains("permission to use, copy, modify"){
-    return License::ISC;
-  }
-  if license_lower.contains("gnu lesser general public license") {
-    if license_lower.contains("version 2"){
-      return License::LGPLv2;
+    if license_lower.contains("permission to use, copy, modify") {
+        return License::ISC;
     }
-    if license_lower.contains("version 3"){
-      return License::LGPLv3;
+    if license_lower.contains("gnu lesser general public license") {
+        if license_lower.contains("version 2") {
+            return License::LGPLv2;
+        }
+        if license_lower.contains("version 3") {
+            return License::LGPLv3;
+        }
     }
-  }
-  if license_lower.contains("eclipse public license"){
-    if license_lower.contains("v 1"){
-      return License::EPLv1;
+    if license_lower.contains("eclipse public license") {
+        if license_lower.contains("v 1") {
+            return License::EPLv1;
+        }
+        if license_lower.contains("v 2") {
+            return License::EPLv2;
+        }
     }
-    if license_lower.contains("v 2"){
-      return License::EPLv2;
+    if license_lower.contains("this license governs use of the accompanying software") {
+        return License::MSPL;
     }
-  }
-  if license_lower.contains("this license governs use of the accompanying software"){
-    return License::MSPL;
-  }
-  if license_lower.contains("this License is intended to allow developers to use the source code and executable files"){
-    return License::CodeProjectOpenLicense;
-  }
-  if license_lower.contains("mozilla public"){
-    return License::MPL;
-  }
-  if license_lower.contains("gnu affero general public license") {
-    if license_lower.contains("version 2"){
-      return License::AGPLv2;
+    if license_lower.contains(
+        "this License is intended to allow developers to use the source code and executable files",
+    ) {
+        return License::CodeProjectOpenLicense;
     }
-    if license_lower.contains("version 3"){
-      return License::AGPLv3;
+    if license_lower.contains("mozilla public") {
+        return License::MPL;
     }
-  }
-  License::NotResolved
+    if license_lower.contains("gnu affero general public license") {
+        if license_lower.contains("version 2") {
+            return License::AGPLv2;
+        }
+        if license_lower.contains("version 3") {
+            return License::AGPLv3;
+        }
+    }
+    License::NotResolved
 }
 
 impl std::fmt::Display for License {
-  fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-      match self {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
         &License::MIT => write!(f, "MIT"),
         &License::ISC => write!(f, "ISC or old-style MIT"),
         &License::GPLv2 => write!(f, "GNU GPL v2"),
@@ -102,5 +103,5 @@ impl std::fmt::Display for License {
         &License::AGPLv3 => write!(f, "GNU AGPL v3"),
         &License::NotResolved => write!(f, "projlyzer couldn't resolve this license. You can open a PR at github.com/electromeow/projlyzer and make projlyzer resolve this license next time!"),
       }
-  }
-} 
+    }
+}
