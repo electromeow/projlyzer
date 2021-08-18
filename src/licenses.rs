@@ -16,12 +16,16 @@ pub enum License {
     AGPLv3,
     AGPLv2,
     NotResolved,
+    WTFPL,
 }
 
 pub fn find_license(license_text: &String) -> License {
     let license_lower = license_text.to_lowercase();
     if license_lower.contains("permission is hereby granted, free of charge") {
         return License::MIT;
+    }
+    if license_lower.contains("you just do what the fuck you want to.") {
+        return License::WTFPL;
     }
     if license_lower.contains("gnu general public license") {
         if license_lower.contains("version 2") {
@@ -101,6 +105,7 @@ impl std::fmt::Display for License {
         &License::MPL => write!(f, "Mozilla Public License"),
         &License::AGPLv2 => write!(f, "GNU AGPL v2"),
         &License::AGPLv3 => write!(f, "GNU AGPL v3"),
+        &License::WTFPL => write!(f, "Do What The F*ck You Want To Public License"),
         &License::NotResolved => write!(f, "projlyzer couldn't resolve this license. You can open a PR at github.com/electromeow/projlyzer and make projlyzer resolve this license next time!"),
       }
     }
