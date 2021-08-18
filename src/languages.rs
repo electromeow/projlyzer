@@ -40,6 +40,7 @@ pub enum Language {
     Haskell,
     Clojure,
     Elixir,
+    EmbeddedElixir,
     Lisp,
     Lua,
     Erlang,
@@ -54,6 +55,8 @@ pub enum Language {
     V,
     Solidity,
     Markdown,
+    Floppa,
+    PlainText,
 }
 
 pub fn extensions<'a>() -> HashMap<&'a str, Language> {
@@ -119,6 +122,7 @@ pub fn extensions<'a>() -> HashMap<&'a str, Language> {
         ("cljc", Language::Clojure),
         ("ex", Language::Elixir),
         ("exs", Language::Elixir),
+        ("eex", Language::EmbeddedElixir),
         ("lsp", Language::Lisp),
         ("lisp", Language::Lisp),
         ("lua", Language::Lua),
@@ -141,6 +145,8 @@ pub fn extensions<'a>() -> HashMap<&'a str, Language> {
         ("md", Language::Markdown),
         ("sol", Language::Solidity),
         ("v", Language::V),
+        ("txt", Language::PlainText),
+        ("flop", Language::Floppa),
         ("", Language::Proprietary),
     ]
     .into_iter()
@@ -200,6 +206,9 @@ impl std::fmt::Display for Language {
             &Language::Solidity => write!(f, "Solidity"),
             &Language::Markdown => write!(f, "Markdown"),
             &Language::Pony => write!(f, "Pony"),
+            &Language::PlainText => write!(f, "Plain Text"),
+            &Language::EmbeddedElixir => write!(f, "Embedded Elixir"),
+            &Language::Floppa => write!(f, "Floppa Programming Language"),
             &Language::Proprietary => write!(f, "Potentially Proprietary Malware"),
         }
     }
@@ -245,6 +254,7 @@ impl Language {
             &Language::Haskell => set_fg(Color::Color256(56)),
             &Language::Clojure => set_fg(Color::Green),
             &Language::Elixir => set_fg(Color::Color256(129)),
+            &Language::EmbeddedElixir => set_fg(Color::Color256(129)),
             &Language::Lisp => set_fg(Color::White),
             &Language::Lua => set_fg(Color::Blue),
             &Language::Erlang => set_fg(Color::Color256(124)),
@@ -259,6 +269,8 @@ impl Language {
             &Language::Markdown => set_fg(Color::Color256(246)),
             &Language::Pony => set_fg(Color::White),
             &Language::V => set_fg(Color::Color256(74)),
+            &Language::Floppa => set_fg(Color::Color256(172)),
+            &Language::PlainText => set_fg(Color::BrightWhite),
         };
     }
 }
