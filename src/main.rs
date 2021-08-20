@@ -42,7 +42,22 @@ fn main() {
             .file_name()
             .to_string_lossy()
             .to_lowercase();
-        if lower_filename.starts_with("license") || lower_filename.starts_with("copying") {
+        if [
+            "license",
+            "license.txt",
+            "license.md",
+            "license.html",
+            "license.htm",
+            "license.rst",
+            "copying",
+            "copying.txt",
+            "copying.md",
+            "copying.html",
+            "copying.htm",
+            "copying.rst",
+        ]
+        .contains(&&lower_filename[..])
+        {
             let mut license_file = PathBuf::from(path_to_project);
             license_file.push(i.unwrap().file_name().to_str().unwrap());
             license_text = match read_to_string(license_file) {

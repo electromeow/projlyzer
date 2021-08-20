@@ -13,6 +13,28 @@ pub fn readdirs(path: &str) -> Vec<String> {
     };
     for i in readdir_iterator {
         let ref_i = i.as_ref().unwrap();
+        if [
+            "license",
+            "license.txt",
+            "license.md",
+            "license.html",
+            "license.htm",
+            "license.rst",
+            "copying",
+            "copying.txt",
+            "copying.md",
+            "copying.html",
+            "copying.htm",
+            "copying.rst",
+            "readme",
+            "readme.md",
+            "readme.txt",
+            "readme.html",
+            "readme.htm",
+            "readme.rst"
+        ].contains(&ref_i.file_name().to_str().unwrap().to_lowercase().as_str()){
+            continue;
+        }
         let meta = ref_i.metadata().unwrap();
         let path = ref_i.path();
         if meta.is_dir() {

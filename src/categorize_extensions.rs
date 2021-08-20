@@ -14,10 +14,7 @@ pub fn categorize_extensions(list_of_files: Vec<String>) -> HashMap<Language, u1
         let filename = i.split('/').last().unwrap();
         if !filename.contains('.') {
             extension = "";
-            if filename.to_lowercase().ends_with("file")
-                || filename.to_lowercase() == "license"
-                || filename.to_lowercase() == "copying"
-            {
+            if filename.to_lowercase().ends_with("file") {
                 continue;
             }
         } else {
