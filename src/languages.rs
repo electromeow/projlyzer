@@ -77,6 +77,7 @@ pub fn extensions<'a>() -> HashMap<&'a str, Language> {
         ("rlib", Language::Proprietary),
         ("exe", Language::Proprietary),
         ("dll", Language::Proprietary),
+        ("dylib", Language::Proprietary),
         ("go", Language::Go),
         ("kt", Language::Kotlin),
         ("kts", Language::Kotlin),
