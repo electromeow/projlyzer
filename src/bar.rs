@@ -40,13 +40,15 @@ pub fn bar(languages_usage: &HashMap<Language, u128>) {
             print!("―");
         }
         reset_fg();
+        print!("|");
+       
     }
     if other > 0 {
         for _ in 1..(((width - 1) as f64 * (other as f64 / total_lines as f64)) as u16) {
             print!("―");
         }
     }
-    println!("|");
+    println!();
     for (lang, ratio) in ratios.iter() {
         lang.set_color_for();
         println!("{}: {}%", lang, (ratio * 10.0).round() / 10.0);
