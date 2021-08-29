@@ -31,7 +31,13 @@ pub fn readdirs(path: &str) -> Vec<String> {
             "readme.txt",
             "readme.html",
             "readme.htm",
-            "readme.rst"
+            "readme.rst",
+            ".git",
+            "venv",
+            ".idea",
+            ".vscode",
+            "node_modules",
+            
         ].contains(&ref_i.file_name().to_str().unwrap().to_lowercase().as_str()){
             continue;
         }
