@@ -11,12 +11,12 @@ Note: The commmands below are for Unixish systems. I don't know the Windows way 
 $ git clone https://github.com/electromeow/projlyzer.git
 $ cd projlyzer/
 # Compile
-$ cargo build
+$ cargo build --release
 # Optionally add to the path.
-$ sudo mv ./target/debug/projlyzer /usr/local/bin/projlyzer
+$ sudo mv ./target/release/projlyzer /usr/local/bin/projlyzer
 $ projlyzer /path/to/project/
 # Or use without adding to the path
-$ ./target/debug/projlyzer /path/to/project/
+$ ./target/release/projlyzer /path/to/project/
 ```
 ## LICENSE
 This project is distributed under MIT license.
